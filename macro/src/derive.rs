@@ -23,6 +23,12 @@ pub fn expand_struct(strct: &Struct, actual_derives: &mut Option<TokenStream>) -
             Trait::PartialOrd => expanded.extend(struct_partial_ord(strct, span)),
             Trait::Serialize => traits.push(quote_spanned!(span=> ::serde::Serialize)),
             Trait::Deserialize => traits.push(quote_spanned!(span=> ::serde::Deserialize)),
+            Trait::ZFData => {
+                traits.push(quote_spanned!(span=> ::zenoh_flow::zenoh_flow_derive::ZFData))
+            }
+            Trait::ZFFakeSerialize => {
+                traits.push(quote_spanned!(span=> ::zenoh_flow::zenoh_flow_derive::ZFFakeSerialize))
+            }
         }
     }
 
@@ -70,6 +76,12 @@ pub fn expand_enum(enm: &Enum, actual_derives: &mut Option<TokenStream>) -> Toke
             Trait::PartialOrd => expanded.extend(enum_partial_ord(enm, span)),
             Trait::Serialize => traits.push(quote_spanned!(span=> ::serde::Serialize)),
             Trait::Deserialize => traits.push(quote_spanned!(span=> ::serde::Deserialize)),
+            Trait::ZFData => {
+                traits.push(quote_spanned!(span=> ::zenoh_flow::zenoh_flow_derive::ZFData))
+            }
+            Trait::ZFFakeSerialize => {
+                traits.push(quote_spanned!(span=> ::zenoh_flow::zenoh_flow_derive::ZFFakeSerialize))
+            }
         }
     }
 

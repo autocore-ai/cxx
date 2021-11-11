@@ -21,6 +21,8 @@ pub enum Trait {
     PartialOrd,
     Serialize,
     Deserialize,
+    ZFData,
+    ZFFakeSerialize,
 }
 
 impl Derive {
@@ -38,6 +40,8 @@ impl Derive {
             "PartialOrd" => Trait::PartialOrd,
             "Serialize" => Trait::Serialize,
             "Deserialize" => Trait::Deserialize,
+            "ZFData" => Trait::ZFData,
+            "ZFFakeSerialize" => Trait::ZFFakeSerialize,
             _ => return None,
         };
         let span = ident.span();
@@ -66,6 +70,8 @@ impl AsRef<str> for Trait {
             Trait::PartialOrd => "PartialOrd",
             Trait::Serialize => "Serialize",
             Trait::Deserialize => "Deserialize",
+            Trait::ZFData => "ZFData",
+            Trait::ZFFakeSerialize => "ZFFakeSerialize",
         }
     }
 }
