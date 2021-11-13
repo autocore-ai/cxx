@@ -26,9 +26,7 @@ pub fn expand_struct(strct: &Struct, actual_derives: &mut Option<TokenStream>) -
             Trait::ZFData => {
                 traits.push(quote_spanned!(span=> ::zenoh_flow::zenoh_flow_derive::ZFData))
             }
-            Trait::ZFFakeSerialize => {
-                traits.push(quote_spanned!(span=> ::zenoh_flow::zenoh_flow_derive::ZFFakeSerialize))
-            }
+            Trait::ZFFakeSerialize => traits.push(quote_spanned!(span=> ::derive::ZFFakeSerialize)),
         }
     }
 
@@ -79,9 +77,7 @@ pub fn expand_enum(enm: &Enum, actual_derives: &mut Option<TokenStream>) -> Toke
             Trait::ZFData => {
                 traits.push(quote_spanned!(span=> ::zenoh_flow::zenoh_flow_derive::ZFData))
             }
-            Trait::ZFFakeSerialize => {
-                traits.push(quote_spanned!(span=> ::zenoh_flow::zenoh_flow_derive::ZFFakeSerialize))
-            }
+            Trait::ZFFakeSerialize => traits.push(quote_spanned!(span=> ::derive::ZFFakeSerialize)),
         }
     }
 
