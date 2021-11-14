@@ -23,6 +23,7 @@ pub enum Trait {
     Deserialize,
     ZFData,
     ZFFakeSerialize,
+    DefaultConfig,
 }
 
 impl Derive {
@@ -42,6 +43,7 @@ impl Derive {
             "Deserialize" => Trait::Deserialize,
             "ZFData" => Trait::ZFData,
             "ZFFakeSerialize" => Trait::ZFFakeSerialize,
+            "DefaultConfig" => Trait::DefaultConfig,
             _ => return None,
         };
         let span = ident.span();
@@ -72,6 +74,7 @@ impl AsRef<str> for Trait {
             Trait::Deserialize => "Deserialize",
             Trait::ZFData => "ZFData",
             Trait::ZFFakeSerialize => "ZFFakeSerialize",
+            Trait::DefaultConfig => "DefaultConfig",
         }
     }
 }
